@@ -9,17 +9,30 @@ CLI app included in distribution folder (dist/py-encrypt-cli.exe)
 ## Basic Usage
 1. Help
 ```
-py py-encrypt-cli -h
+py-encrypt-cli -h
 ```
-2. Generate file "filekey.key" with key
+2. Generate file "filekey.key" with key (required)
 ```
-py py-encrypt-cli -gk true
+py-encrypt-cli -gk true
 ```
-3. Generate file "filekey.key" with key
+3. Encrypt file from ./csv-files-sample folder
 ```
-py py-encrypt-cli -gk true
+py-encrypt-cli "../csv-files-sample/timezone.csv" -pt file -et encrypt
 ```
-
+- App generate new encrypted file: ../csv-files-sample/timezone_5cocx5L9XKJ47g.csv
+4. Decrypt file
+```
+py-encrypt-cli "../csv-files-sample/timezone_5cocx5L9XKJ47g.csv" -pt file -et decrypt
+```
+5. Encrypt folder ./csv-files-sample
+```
+py-encrypt-cli "../csv-files-sample" -pt folder -et encrypt
+```
+- App generate new encrypted zip file: ../csv-files-sample_MVWiuJ7UvCEYTg.zip
+6. Decrypt folder (zip file)
+```
+py-encrypt-cli "../csv-files-sample_MVWiuJ7UvCEYTg.zip" -pt folder -et decrypt
+```
 
 ## Setup for Local Development
 
@@ -39,15 +52,19 @@ pip install -r requirements.txt
 ```
 py py-encrypt-cli.py -h
 ```
-5. Build cli output (more refer to : https://pyinstaller.org/en/stable/usage.html)
+5. Generate file "filekey.key" with key (required)
+```
+py py-encrypt-cli.py -gk true
+```
+6. Build cli output (more refer to : https://pyinstaller.org/en/stable/usage.html)
 ```
 pyinstaller py-encrypt-cli.spec
 ```
-6. Export a list of all installed packages (Optional)
+7. Export a list of all installed packages (Optional)
 ```
 pip freeze > requirements.txt
 ```
-7. Leaving the environment
+8. Leaving the environment
 ```
 deactivate
 ```
