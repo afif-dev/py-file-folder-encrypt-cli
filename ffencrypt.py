@@ -1,9 +1,9 @@
 import os, secrets, shutil
-from filekey import loadKey
+from filekey import load_key
 
-def encryptFile(args):
+def encrypt_file(args):
     # load key
-    fernet = loadKey()
+    fernet = load_key()
     # split path
     filename, file_extension = os.path.splitext(args.path)
     # new filename
@@ -27,11 +27,10 @@ def encryptFile(args):
             
     except Exception:
         print(f"Error: File {args.path} is invalid!\n")
-        exit()
 
-def decryptFile(args):
+def decrypt_file(args):
     # load key
-    fernet = loadKey()
+    fernet = load_key()
 
     try:
         # opening the encrypted file
@@ -51,11 +50,10 @@ def decryptFile(args):
 
     except Exception:
         print(f"Error: File {args.path} is invalid!\n")
-        exit()
 
-def encryptFolder(args):
+def encrypt_folder(args):
     # load key
-    fernet = loadKey()
+    fernet = load_key()
     # new folder name
     new_folder = args.path + '_' + secrets.token_urlsafe(10)
     # new folder zip name
@@ -87,11 +85,10 @@ def encryptFolder(args):
     
     except Exception:
         print(f"Error: Folder {args.path} is invalid!\n")
-        exit()
 
-def decryptFolder(args):
+def decrypt_folder(args):
     # load key
-    fernet = loadKey()
+    fernet = load_key()
     
     try:
         # opening the encrypted file
@@ -112,4 +109,3 @@ def decryptFolder(args):
     
     except Exception:
         print(f"Error: Zip file {args.path} is invalid!\n")
-        exit()

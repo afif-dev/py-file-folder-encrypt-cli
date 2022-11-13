@@ -2,7 +2,7 @@ from cryptography.fernet import Fernet
 
 filekey_path = 'filekey.key'
 
-def generateKey():
+def generate_key():
     # key generation
     key = Fernet.generate_key()
     # string the key in a file
@@ -11,7 +11,7 @@ def generateKey():
         filekey.close()
         print(f'Done: New key in {filekey_path} is generated!\n')
 
-def loadKey():
+def load_key():
     try:
         # opening the key
         with open(filekey_path, 'rb') as filekey:
@@ -21,4 +21,3 @@ def loadKey():
         return Fernet(key)
     except Exception:
         print(f"Error: {filekey_path} is required!\n")
-        exit()

@@ -1,7 +1,7 @@
 import argparse
 from cryptography.fernet import Fernet
-from filekey import generateKey
-from ffencrypt import encryptFile, decryptFile, encryptFolder, decryptFolder
+from filekey import generate_key
+from ffencrypt import encrypt_file, decrypt_file, encrypt_folder, decrypt_folder
 
 def main():
     startuptxt = """
@@ -26,19 +26,19 @@ Author: afif-dev https://github.com/afif-dev
     args = parser.parse_args()
     
     if args.gen_key == 'true':
-        generateKey();
+        generate_key();
     elif args.path != None and args.path_type == 'file' and args.encryption_type == 'encrypt':
         print("# Encrypt File")
-        encryptFile(args)
+        encrypt_file(args)
     elif args.path != None and args.path_type == 'file' and args.encryption_type == 'decrypt':
         print("# Decrypt File")
-        decryptFile(args)
+        decrypt_file(args)
     elif args.path != None and args.path_type == 'folder' and args.encryption_type == 'encrypt':
         print("# Encrypt Folder")
-        encryptFolder(args)
+        encrypt_folder(args)
     elif args.path != None and args.path_type == 'folder' and args.encryption_type == 'decrypt':
         print("# Decrypt Folder")
-        decryptFolder(args)
+        decrypt_folder(args)
     else:
         parser.print_help()
 
